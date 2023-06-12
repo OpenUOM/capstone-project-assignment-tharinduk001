@@ -50,7 +50,7 @@ const readTeacherInfo = async (id) => {
     });
 }
 
-/*
+
 const addTeacher = async (id, name, age) => {
     const sql = `INSERT INTO teacher(id,name,age) values (?, ?, ?)`
     return new Promise((resolve, reject) => {
@@ -64,7 +64,7 @@ const addTeacher = async (id, name, age) => {
             });
     });
 }
-*/
+/*
 const addTeacher = async (id, name, age) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -78,7 +78,7 @@ const addTeacher = async (id, name, age) => {
             });
     });
 }
-
+*/
 
 
 const updateTeacher = async (name, age, id) => {
