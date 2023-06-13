@@ -12,6 +12,7 @@ export class StudentTableComponent implements OnInit {
   faTrash = faTrash;
   faPlus = faPlus;
   faPenSquare = faPenSquare;
+
   studentData: any;
   selected: any;
 
@@ -35,6 +36,7 @@ export class StudentTableComponent implements OnInit {
   }
 
   getStudentData(){
+    this.selected = 'Students';
     this.service.getStudentData().subscribe((response)=>{
       this.studentData = Object.keys(response).map((key) => [response[key]]);
     },(error)=>{
