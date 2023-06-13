@@ -1,14 +1,14 @@
 const dbConnection = require("./sqlite");
 
 dbConnection
-    .getDbConnection()
-    .then((db) => {
-        init(db);
-    })
-    .catch((err) => {
-        console.log(err);
-        throw err;
-    });
+  .getDbConnection()
+  .then((db) => {
+    init(db);
+  })
+  .catch((err) => {
+    console.log(err);
+    throw err;
+  });
 
 let _db;
 
@@ -27,8 +27,8 @@ const readTeachers = async () => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then((teachers) => {
+                resolve(teachers);
             })
             .catch((error) => {
                 reject(error);
@@ -56,7 +56,7 @@ const addTeacher = async (id, name, age) => {
         knex_db
             .raw(sql, [id, name, age])
             .then(() => {
-                resolve({ status: "Successfully inserted Teacher" })
+                resolve({status: "Successfully inserted Teacher"});
             })
             .catch((error) => {
                 reject(error);
@@ -64,14 +64,13 @@ const addTeacher = async (id, name, age) => {
     });
 }
 
-
 const updateTeacher = async (name, age, id) => {
     const sql = `UPDATE teacher SET name=?, age=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql, [name, age, id])
             .then(() => {
-                resolve({ status: "Successfully updated Teacher" })
+                resolve({status: "Successfully updated Teacher"});
             })
             .catch((error) => {
                 reject(error);
@@ -85,7 +84,7 @@ const deleteTeacher = async (id) => {
         knex_db
             .raw(sql, [id])
             .then(() => {
-                resolve({ status: "Successfully deleted Teacher" })
+                resolve({status: "Successfully deleted Teacher"});
             })
             .catch((error) => {
                 reject(error);
@@ -98,8 +97,8 @@ const readStudents = async () => {
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
-            .then((data) => {
-                resolve(data);
+            .then((students) => {
+                resolve(students);
             })
             .catch((error) => {
                 reject(error);
@@ -122,12 +121,12 @@ const readStudentInfo = async (id) => {
 }
 
 const addStudent = async (id, name, age, hometown) => {
-    const sql = `INSERT INTO student(id, name, age, hometown) values (?, ?, ?, ?)`
+    const sql = `INSERT INTO student(id,name,age,hometown) values (?, ?, ?, ?)`
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql, [id, name, age, hometown])
             .then(() => {
-                resolve({ status: "Successfully inserted Student" })
+                resolve({status: "Successfully inserted Student"});
             })
             .catch((error) => {
                 reject(error);
@@ -141,13 +140,13 @@ const updateStudent = async (name, age, hometown, id) => {
         knex_db
             .raw(sql, [name, age, hometown, id])
             .then(() => {
-                resolve({ status: "Successfully updated Student" })
+                resolve({status: "Successfully updated Student"});
             })
             .catch((error) => {
                 reject(error);
             });
     });
-}
+} 
 
 const deleteStudent = async (id) => {
     const sql = `DELETE FROM student WHERE id = ?`
@@ -155,7 +154,7 @@ const deleteStudent = async (id) => {
         knex_db
             .raw(sql, [id])
             .then(() => {
-                resolve({ status: "Successfully deleted Student" })
+                resolve({status: "Successfully deleted Student"});
             })
             .catch((error) => {
                 reject(error);
@@ -164,6 +163,7 @@ const deleteStudent = async (id) => {
 }
 
 module.exports = {
+    dbinitialize,
     readTeachers,
     readStudents,
     addStudent,
@@ -173,6 +173,5 @@ module.exports = {
     readStudentInfo,
     readTeacherInfo,
     updateStudent,
-    updateTeacher,
-    dbinitialize
+    updateTeacher
 };
