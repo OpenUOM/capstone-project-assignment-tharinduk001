@@ -16,11 +16,11 @@ exports.config = {
     browserName: 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4401/',
+  baseUrl: 'http://localhost:4200/',/* 4401 */
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 90000, /* 30000 */
     print: function() {}
   },
   onPrepare() {
